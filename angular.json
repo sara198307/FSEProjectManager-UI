@@ -3,21 +3,17 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "FSEProjectManager": {
+    "mean-project-manager-app": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
+      "schematics": {},
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/FSEProjectManager",
+            "outputPath": "dist/mean-project-manager-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -27,7 +23,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true
@@ -62,18 +58,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "FSEProjectManager:build"
+            "browserTarget": "mean-project-manager-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "FSEProjectManager:build:production"
+              "browserTarget": "mean-project-manager-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "FSEProjectManager:build"
+            "browserTarget": "mean-project-manager-app:build"
           }
         },
         "test": {
@@ -84,7 +80,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.scss"
+              "src/styles.css"
             ],
             "scripts": [],
             "assets": [
@@ -107,7 +103,7 @@
         }
       }
     },
-    "FSEProjectManager-e2e": {
+    "mean-project-manager-app-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -116,11 +112,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "FSEProjectManager:serve"
+            "devServerTarget": "mean-project-manager-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "FSEProjectManager:serve:production"
+              "devServerTarget": "mean-project-manager-app:serve:production"
             }
           }
         },
@@ -136,5 +132,5 @@
       }
     }
   },
-  "defaultProject": "FSEProjectManager"
+  "defaultProject": "mean-project-manager-app"
 }

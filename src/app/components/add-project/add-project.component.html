@@ -6,7 +6,7 @@
       <div class="form-group row">
         <label for="projectname" class="col-sm-2 col-form-label">*Project:</label>
         <div class="col-sm-12 col-md-12 col-lg-10 col-xl-8">
-          <input type="text" name="projectname" [(ngModel)]="project.Project" class="form-control" id="Project" required
+          <input type="text" name="projectname" [(ngModel)]="project.project" class="form-control" id="Project" required
             #projectname="ngModel">
           <div [hidden]="projectname.valid || projectname.pristine" class="alert alert-danger">
             Project Name is required
@@ -36,7 +36,7 @@
         <div class="col-sm-12 col-md-12 col-lg-10 col-xl-8">
           <span class="">0</span> <span class="float-right">30</span>
           <input type="range" class="form-control slider" id="priority" [min]="0" [max]="30" name="priority"
-            placeholder="priority" [(ngModel)]="Priority">
+            placeholder="priority" [(ngModel)]="priority">
         </div>
       </div>
 
@@ -61,8 +61,8 @@
             <div class="modal-body">
               <input type="search" class="form-control" placeholder="Search by user first name" name="search" [(ngModel)]="searchManager" />
               <ul>
-                <li *ngFor="let user of users |filter : searchManager: 'First_Name'" (click)="selectManager(user)">
-                  {{user.First_Name}} {{user.Last_Name}}
+                <li *ngFor="let user of users |filter : searchManager: 'firstName'" (click)="selectManager(user)">
+                  {{user.firstName}} {{user.lastName}}
                 </li>
               </ul>
 
@@ -96,11 +96,11 @@
       </div>
 
       <span class="mr-3">Sort By: </span><button type="button" class="btn btn-secondary col-sm-2 mr-2"
-        (click)="filterProjects('Start_Date')">Start
+        (click)="filterProjects('startDate')">Start
         Date</button>
-      <button type="button" class="btn btn-secondary col-sm-2 mr-2" (click)="filterProjects('End_Date')">End Date
+      <button type="button" class="btn btn-secondary col-sm-2 mr-2" (click)="filterProjects('endDate')">End Date
       </button>
-      <button type="button" class="btn btn-secondary col-sm-2 mr-2" (click)="filterProjects('Priority')">Priority
+      <button type="button" class="btn btn-secondary col-sm-2 mr-2" (click)="filterProjects('priority')">Priority
       </button>
       <button type="button" class="btn btn-secondary col-sm-2 mr-2" (click)="filterProjects('NumOfTasksComp')">Completed
       </button>
@@ -109,7 +109,7 @@
       <li *ngFor="let proj of projects |filter : search: 'Project'" class=" list-group-item">
         <div class="row">
           <div class="col-sm-8 form-control">
-            <label for="Project" class="col-form-label">Project: </label> {{proj.Project}}
+            <label for="Project" class="col-form-label">Project: </label> {{proj.project}}
             <!-- <input class="col-sm-6" type="text" readonly [(ngModel)]="proj.Project" name="Project"
               [ngModelOptions]="{standalone: true}" class="form-control"> -->
             <div class="row">
@@ -128,23 +128,18 @@
             </div>
             <div class="row">
               <p class="col-sm-6 mb-0">
-                <label for="startDt" class="col-form-label">Start Date: </label> {{proj.Start_Date}}
+                <label for="startDt" class="col-form-label">Start Date: </label> {{proj.startDate}}
               </p>
               <p class="col-sm-6 mb-0">
-                <label for="endDt" class="col-form-label">End Date: </label> {{proj.End_Date}}
+                <label for="endDt" class="col-form-label">End Date: </label> {{proj.endDate}}
               </p>
-              <!-- <input class="col-sm-3" type="text"
-                readonly [(ngModel)]="proj.Start_Date" name="startDt" [ngModelOptions]="{standalone: true}"
-                class="form-control"> -->
-
-              <!-- <input class="col-sm-3" type="text" readonly
-                [(ngModel)]="proj.End_Date" name="endDt" [ngModelOptions]="{standalone: true}" class="form-control"> -->
+              
             </div>
 
           </div>
           <div class="col-sm-2">
             <label for="priority" class="col-form-label">Priority: </label>
-            <p class="pb-5 form-control">{{proj.Priority}}</p>
+            <p class="pb-5 form-control">{{proj.priority}}</p>
             <!-- Priority: <input class="col-sm-9" type="text" readonly [(ngModel)]="proj.Priority" name="endDt"
               [ngModelOptions]="{standalone: true}" class="form-control"> -->
 

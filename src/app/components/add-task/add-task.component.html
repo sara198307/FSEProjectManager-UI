@@ -1,3 +1,162 @@
-<p>
-  add-task works!
-</p>
+<div class="shadow-none mb-5  rounded">
+  <div class="alert alert-success d-none" role="alert" id="alert"></div>
+  <div>
+    <form #addtask="ngForm" class="col-sm-12 col-md-12 col-lg-12 col-xl-8 mt-5">
+      <div class="form-group row">
+        <label for="project" class="col-sm-2 col-form-label">Project:</label>
+        <div class="col-sm-8">
+          <input class="form-control col-sm-9 float-left mr-3" type="text" readonly name="project"
+            [(ngModel)]="task.Project" id="project">
+          <button type="button" class="btn btn-secondary pl-1 col-sm-2" data-toggle="modal"
+            [disabled]="task.checked ||updateData.edit" data-target="#projectModal">search</button>
+        </div>
+      </div>
+      <!-- The Modal -->
+      <div class="modal" id="projectModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Select Project</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <input type="search" class="form-control" placeholder="Search" name="search" [(ngModel)]="searchProject"
+                [disabled]="task.checked" />
+              <ul>
+                <li *ngFor="let proj of projects |filter : searchProject: 'Project'" (click)="selectProject(proj)">
+                  {{proj.Project}}
+                </li>
+              </ul>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <label for="task" class="col-sm-2 col-form-label">*Task:</label>
+        <div class="col-sm-8">
+          <input type="text" name="taskname" [(ngModel)]="task.TaskName" class="form-control" id="task" required #taskname="ngModel">
+          <div [hidden]="taskname.valid || taskname.pristine" class="alert alert-danger">
+            Task Name is required
+         </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+          <input type="checkbox" name="check" [(ngModel)]="task.checked" [disabled]="updateData.edit"
+            aria-label="Check if you want to make it as parent task"> Parent Task
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="priority" class="col-sm-2 col-form-label">Priority: </label>
+        <div class="col-sm-8">
+          <span class="">0</span> <span class="float-right">30</span>
+          <input type="range" class="form-control slider" id="priority" [min]="0" [max]="30" placeholder="priority"
+            [disabled]="task.checked" name="priority" [(ngModel)]="task.Priority">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="parenttask" class="col-sm-2 col-form-label">Parent Task: </label>
+        <div class="col-sm-8">
+          <input class="form-control col-sm-9 float-left mr-3" type="text" readonly name="parenttask"
+            [(ngModel)]="task.parent" id="parent">
+          <button type="button" class="btn btn-secondary pl-1 col-sm-2" data-toggle="modal" [disabled]="task.checked"
+            data-target="#parentModal">search</button>
+        </div>
+      </div>
+
+      <!-- The Parent Modal -->
+      <div class="modal" id="parentModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Select Parent</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <input type="search" class="form-control" placeholder="Search" name="search" [(ngModel)]="searchParent" />
+              <ul>
+                <li *ngFor="let parent of parentTasks |filter : searchParent: 'Parent_Task'"
+                  (click)="selectParent(parent)">
+                  {{parent.Parent_Task}}
+                </li>
+                <li (click)="selectParent('No Parent')">No Parent</li>
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="form-group row">
+        <label for="startDt" class="col-sm-2 col-form-label">Start Date: </label>
+        <div class="col-sm-3">
+          <input type="date" class="form-control" id="startDt" [min]="currentDate" name="startDt"
+            [disabled]="task.checked" [(ngModel)]="task.startDate">
+        </div>
+        <label for="endDt" class="col-sm-2 col-form-label">End Date: </label>
+        <div class="col-sm-3">
+          <input type="date" class="form-control" id="endDt" [min]="currentDate" name="endDt" [(ngModel)]="task.endDate"
+            [disabled]="task.checked">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="user" class="col-sm-2 col-form-label">User: </label>
+        <div class="col-sm-8">
+          <input class="form-control col-sm-9 float-left mr-3" type="text" readonly name="parent"
+            [(ngModel)]="task.user" id="parent">
+          <button type="button" class="btn btn-secondary pl-1 col-sm-2" data-toggle="modal" [disabled]="task.checked"
+            data-target="#userModal">search</button>
+        </div>
+      </div>
+
+      <!-- The user Modal -->
+      <div class="modal" id="userModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Select User</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <input type="search" class="form-control" placeholder="Search" name="search" [(ngModel)]="searchUser" />
+              <ul>
+                <li *ngFor="let user of users |filter : searchUser: 'First_Name'" (click)="selectUser(user)">
+                  {{user.First_Name}} {{user.Last_Name}}
+                </li>
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-9 float-right" [hidden]="updateData.edit">
+        <button type="button" class="btn btn-secondary  mr-2" (click)="addTask(task)" [disabled]="!addtask.form.valid">Add Task </button>
+        <button type="reset" class="btn btn-secondary" id="reset">Reset</button>
+      </div>
+      <div class="col-sm-9 float-right" [hidden]="!updateData.edit">
+        <button type="button" class="btn btn-secondary  mr-2" (click)="updateTask(task)" [disabled]="!addtask.form.valid">Update </button>
+        <button type="button" class="btn btn-secondary" (click)="Cancel()">Cancel</button>
+      </div>
+
+    </form>
+  </div>
+
+</div>

@@ -1,13 +1,11 @@
-import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
+import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RestApiService {
-
-  
+export class BackendApiService {
 
   constructor(private httpService: Http) { }
   private messageSource;
@@ -26,7 +24,7 @@ export class RestApiService {
   }
 
   getUsersList() {
-    return this.httpService.get("/api/users")
+    return this.httpService.get("http://localhost:8080/getAllUsers")
       .pipe(map(response => {    //receive the resp from rest api 
         return response.json();   //sending it back to component thru service
       }));
@@ -50,7 +48,8 @@ export class RestApiService {
 
   // add Project
   addProject(project) {
-    return this.httpService.post("/api/addproject", project)
+    console.log("Saved Project"+JSON.stringify(project));
+    return this.httpService.post("http://localhost:8080/addProject", project)
       .pipe(map(response => {    //receive the resp from rest api 
         return response.json();   //sending it back to component thru service
       }));
@@ -58,15 +57,15 @@ export class RestApiService {
 
   // get Projects List
   getProjectsList() {
-    return this.httpService.get("/api/projects")
+    return this.httpService.get("http://localhost:8080/getAllProjects")
       .pipe(map(response => {    //receive the resp from rest api 
         return response.json();   //sending it back to component thru service
       }));
   }
 
   //update Project
-  updateProject(newObj) {
-    return this.httpService.put("/api/updateProject", newObj)
+  updateProject(newObj,projectId) {
+    return this.httpService.put("http://localhost:8080/updateProject/" + projectId, newObj)
       .pipe(map(response => {    //receive the resp from rest api 
         return response.json();   //sending it back to component thru service
       }));
@@ -88,7 +87,7 @@ export class RestApiService {
   }
   
   getTasksList(id) {
-    return this.httpService.get("/api/tasks/"+id)
+    return this.httpService.get("http://localhost:8080/getTask/"+id)
       .pipe(map(response => {    //receive the resp from rest api 
         return response.json();   //sending it back to component thru service
       }));
@@ -108,4 +107,5 @@ export class RestApiService {
         return response.json();   //sending it back to component thru service
       }));
   }
+
 }

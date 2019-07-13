@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { BackendApiService } from '../../services/backend-api.service';
 import { OrderPipe } from 'ngx-order-pipe';
-import { RestApiService } from '../../services/rest-api.service';
 import { fail } from 'assert';
 
 @Component({
   selector: 'app-add-project',
   templateUrl: './add-project.component.html',
-  styleUrls: ['./add-project.component.scss']
+  styleUrls: ['./add-project.component.css']
 })
 export class AddProjectComponent implements OnInit {
 
   project = {
-    'Project': '',
-    'Priority': 0,
+    'project': '',
+    'priority': 0,
     'startDate': '',
     'endDate': '',
     'Manager': '',
@@ -25,34 +25,107 @@ export class AddProjectComponent implements OnInit {
   projects: Object[];
   projectsCopy: Object[];
   Priority: Number;
-  constructor(private BackendApiService: RestApiService, private orderPipe: OrderPipe) { }
+  constructor(private RestApiService: BackendApiService, private orderPipe: OrderPipe) { }
 
   ngOnInit() {
     this.currentDate = this.getcurrentDate().requestDt;
     this.defaultEndDt = this.getcurrentDate().defaultEndDt;
     this.Priority = 0;
-    //this.getUersList();
-    //this.getProjectsList();
+    this.getUersList();
+    this.getProjectsList();
   }
+
+  reset = function () {
+    document.getElementById('reset').click();
+    this.priority = 0;
+  }
+
+  assignDefault = function () {
+    if (this.project.checked) {
+      this.project.startDate = this.currentDate;
+      this.project.endDate = this.defaultEndDt;
+    } else {
+      this.project.startDate = '';
+      this.project.endDate = '';
+    }
+  }
+
+
+  addProject = function () {
+    var request = {
+      'project': this.project.project,
+      'startDate': this.project.startDate,
+      'endDate': this.project.endDate,
+      'priority': this.priority,
+      'Manager': this.project.Manager
+    };
+    this.RestApiService.addProject(request).subscribe((res) => {
+      document.getElementById('alert').innerHTML = 'Added Project Successfully!';
+      document.getElementById('alert').classList.remove('d-none');
+      this.reset();
+      this.getProjectsList();
+    });
+    setTimeout(function () {
+      document.getElementById('alert').classList.add('d-none');
+    }, 5000);
+
+  }
+
+  EditProject = function (proj) {
+    this.project = {
+      'edit': true
+    };
+    this.project.projectId = proj.projectId;
+    this.priority = proj.priority;
+    this.project.project = proj.project;
+    this.project.startDate = proj.atartDate;
+    this.project.endDate = proj.endDate;
+    this.project.Manager = proj.Manager;
+  }
+
+  updateProject = function () {
+    var request = {
+      'projectId': this.project.projectId,
+      'project': this.project.project,
+      'startDate': this.project.startDate,
+      'endDate': this.project.endDate,
+      'priority': this.priority,
+      'Manager': this.project.Manager
+    };
+    this.RestApiService.updateProject(request,this.project.projectId).subscribe((res) => {
+      document.getElementById('alert').innerHTML = 'Updated Project Successfully!';
+      document.getElementById('alert').classList.remove('d-none');
+      this.reset();
+      this.project.edit = false;
+      this.getProjectsList();
+    });
+    setTimeout(function () {
+      document.getElementById('alert').classList.add('d-none');
+    }, 5000);
+
+  }
+
+  getProjectsList = function () {
+    this.RestApiService.getProjectsList().subscribe((res) => {
+      this.projects = res;
+      this.projectsCopy = res;
+      //this.getTasksList();
+    })
+  }
+
   getUersList = function () {
-    this.BackendApiService.getUsersList().subscribe((res) => {
+    this.RestApiService.getUsersList().subscribe((res) => {
       this.users = res;
       this.usersCopy = res;
     })
   }
-  getProjectsList = function () {
-    this.BackendApiService.getProjectsList().subscribe((res) => {
-      this.projects = res;
-      this.projectsCopy = res;
-      this.getTasksList();
-    })
-  }
+
   getTasksList = function () {
     this.projects.forEach(element => {
       let count = 0;
       let id = element._id;
       element.NumOfTasksComp = count;
-      this.BackendApiService.getTasksList(id).subscribe((res) => {
+      this.RestApiService.getTasksList(id).subscribe((res) => {
         this.tasks = res;
         element.NumOfTasks = res.length;
         res.forEach(task => {
@@ -62,8 +135,25 @@ export class AddProjectComponent implements OnInit {
       })
     });
   }
+
+  getcurrentDate = function () {
+    let currentDate = new Date();
+    let date = "" + currentDate.getDate();
+    if (+date < 10) { date = "0" + date }
+    var nextdate = +date + 1
+    var month = "" + (currentDate.getMonth() + 1);
+    if (+month < 10) { month = "0" + month }
+    var year = currentDate.getFullYear();
+    var requestDt = year + "-" + month + "-" + date;
+    var defaultEndDt = year + "-" + month + "-" + (nextdate < 10 ? "0" + nextdate : nextdate)
+    return {
+      requestDt: requestDt,
+      defaultEndDt: defaultEndDt
+    };
+  }
+
   selectManager = function (user) {
-    this.project.Manager = user.First_Name + " " + user.Last_Name;
+    this.project.Manager = user.firstName + " " + user.lastName;
     this.searchManager = '';
   }
 
@@ -81,36 +171,5 @@ export class AddProjectComponent implements OnInit {
       return false;
     }
   }
-  reset = function () {
-    document.getElementById('reset').click();
-    this.Priority = 0;
-  }
-
-  assignDefault = function () {
-    if (this.project.checked) {
-      this.project.startDate = this.currentDate;
-      this.project.endDate = this.defaultEndDt;
-    } else {
-      this.project.startDate = '';
-      this.project.endDate = '';
-    }
-  }
-  getcurrentDate = function () {
-    let currentDate = new Date();
-    let date = "" + currentDate.getDate();
-    if (+date < 10) { date = "0" + date }
-    var nextdate = +date + 1
-    var month = "" + (currentDate.getMonth() + 1);
-    if (+month < 10) { month = "0" + month }
-    var year = currentDate.getFullYear();
-    var requestDt = year + "-" + month + "-" + date;
-    var defaultEndDt = year + "-" + month + "-" + (nextdate < 10 ? "0" + nextdate : nextdate)
-    return {
-      requestDt: requestDt,
-      defaultEndDt: defaultEndDt
-    };
-  }
-
-
 
 }
