@@ -80,7 +80,7 @@ export class BackendApiService {
   }
 
   addTask(task) {
-    return this.httpService.post("/api/addtask", task)
+    return this.httpService.post("http://localhost:8080/addTask", task)
       .pipe(map(response => {    //receive the resp from rest api 
         return response.json();   //sending it back to component thru service
       }));
@@ -92,17 +92,23 @@ export class BackendApiService {
         return response.json();   //sending it back to component thru service
       }));
   }
+  addParentTask(task) {
+    return this.httpService.post("http://localhost:8080/addParentTask", task)
+      .pipe(map(response => {    //receive the resp from rest api 
+        return response.json();   //sending it back to component thru service
+      }));
+  }
 
   getParentTasksList() {
-    return this.httpService.get("/api/parenttasks")
+    return this.httpService.get("http://localhost:8080/getAllParent")
       .pipe(map(response => {    //receive the resp from rest api 
         return response.json();   //sending it back to component thru service
       }));
   }
 
 
-  updateTask(newObj) {
-    return this.httpService.put("/api/updatetask", newObj)
+  updateTask(newObj,taskId) {
+    return this.httpService.put("http://localhost:8080/updateTask/", newObj,taskId)
       .pipe(map(response => {    //receive the resp from rest api 
         return response.json();   //sending it back to component thru service
       }));

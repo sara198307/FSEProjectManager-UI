@@ -10,25 +10,25 @@ import { Router } from '@angular/router';
 export class AddTaskComponent implements OnInit {
 
   task = {
-    'Project_ID':'',
-    'Project':'',
+    'projectId':'',
+    'project':'',
     'parent':'',
-    'Parent_ID':'',
+    'parentId':'',
     'user':'',
-    'Priority':0,
+    'priority':0,
     'startDate':'',
     'endDate':'',
-    'TaskName':''
+    'task':''
   };
   updateData: {
-    '_id': '',
+    'taskId': '',
     'edit': false,
-    'Task': '',
-    'Start_Date': '',
-    'End_Date': '',
-    'Project_ID': '',
-    'Priority': 0,
-    'Parent_ID': ''
+    'task': '',
+    'startDate': '',
+    'endDate': '',
+    'projectId': '',
+    'priority': 0,
+    'parentId': ''
   };
   tasks: Object[];
   parentTasks: Object[];
@@ -47,49 +47,34 @@ export class AddTaskComponent implements OnInit {
     this.updateData = this.BackendApiService.getData();
     if (this.updateData === undefined) {
       this.updateData = {
-        '_id': '',
+        'taskId': '',
         'edit': false,
-        'Task': '',
-        'Start_Date': '',
-        'End_Date': '',
-        'Project_ID': '',
-        'Priority': 0,
-        'Parent_ID': ''
+        'task': '',
+        'startDate': '',
+        'endDate': '',
+        'projectId': '',
+        'priority': 0,
+        'parentId': ''
       };
     }
-    this.task.Priority =0;
+    this.task.priority =0;
     this.task.startDate =this.currentDate;
     this.task.endDate =this.defaultEndDt;
-    // this.task={
-    //   'Priority': 0,
-    //   'startDate':this.currentDate,
-    //   'endDate':this.defaultEndDt
-    // };
+    
     this.getParentTasksList();
     this.getUersList();
     this.getProjectsList();
     if (this.updateData && this.updateData.edit) {
-      this.task.Priority =this.updateData.Priority;
-    this.task.startDate =this.updateData.Start_Date;
-    this.task.endDate =this.updateData.End_Date;
-    this.task.TaskName=this.updateData.Task;
-      // this.task = {
-      //   TaskName: this.updateData.Task,
-      //   startDate: this.updateData.Start_Date,
-      //   endDate: this.updateData.End_Date,
-      //   Priority: this.updateData.Priority
-      // }
+      this.task.priority =this.updateData.priority;
+    this.task.startDate =this.updateData.startDate;
+    this.task.endDate =this.updateData.endDate;
+    this.task.task=this.updateData.task;
     }
   }
 
   reset() {
     document.getElementById('reset').click();
-    // this.task={
-    //   'Priority': 0,
-    //   'startDate':this.currentDate,
-    //   'endDate':this.defaultEndDt
-    // };
-    this.task.Priority =0;
+    this.task.priority =0;
     this.task.startDate =this.currentDate;
     this.task.endDate =this.defaultEndDt;
   }
@@ -99,7 +84,7 @@ export class AddTaskComponent implements OnInit {
       this.parentTasks = ptasks;
       this.parentTasksCopy = ptasks;
       if (this.updateData && this.updateData.edit) {
-        this.task.parent = this.getParentByFilter(this.updateData.Parent_ID);
+        this.task.parent = this.getParentByFilter(this.updateData.projectId);
       }
 
     });
@@ -117,7 +102,7 @@ export class AddTaskComponent implements OnInit {
       this.projects = res;
       this.projectsCopy = res;
       if (this.updateData && this.updateData.edit) {
-        this.task.Project = this.getProjectByFilter(this.updateData.Project_ID);
+        this.task.Project = this.getProjectByFilter(this.updateData.projectId);
       }
     })
   }
@@ -125,19 +110,27 @@ export class AddTaskComponent implements OnInit {
   addTask = function (task) {
     if (task.checked) {
       this.request = {
-        'Parent_Task': this.task.TaskName,
+        'parentTask': this.task.task,
       };
+      this.BackendApiService.addParentTask(this.request)
+      .subscribe(    //receive the data from service
+        (value) => {
+          document.getElementById('alert').innerHTML = 'Added Parent Task Successfully!';
+          document.getElementById('alert').classList.remove('d-none');
+          this.reset();
+          this.getParentTasksList();
+        }
+      );
     } else {
       this.request = {
-        'Parent_ID': this.task.Parent_ID,
-        'Project_ID': this.task.Project_ID,
-        'Task': this.task.TaskName,
-        'Start_Date': this.task.startDate,
-        'End_Date': this.task.endDate,
-        'Priority': this.task.Priority
+        'parentId': this.task.parentId,
+        'projectId': this.task.projectId,
+        'task': this.task.task,
+        'startDate': this.task.startDate,
+        'endDate': this.task.endDate,
+        'priority': this.task.priority
       };
-    }
-    this.BackendApiService.addTask(this.request)
+      this.BackendApiService.addTask(this.request)
       .subscribe(    //receive the data from service
         (value) => {
           document.getElementById('alert').innerHTML = 'Added Task Successfully!';
@@ -146,6 +139,8 @@ export class AddTaskComponent implements OnInit {
           this.getParentTasksList();
         }
       );
+    }
+  
     setTimeout(function () {
       document.getElementById('alert').classList.add('d-none');
     }, 5000);
@@ -153,19 +148,19 @@ export class AddTaskComponent implements OnInit {
 
 
   selectProject = function (proj) {
-    this.task.Project_ID = proj._id;
-    this.task.Project = proj.Project;
+    this.task.projectId = proj.projectId;
+    this.task.project = proj.project;
     this.searchProject = '';
   }
 
   selectParent = function (parent) {
-    this.task.Parent_ID = parent !== 'No Parent' ? parent._id : undefined;
-    this.task.parent = parent !== 'No Parent' ? parent.Parent_Task : parent;
+    this.task.parentId = parent !== 'No Parent' ? parent.parentId : undefined;
+    this.task.parent = parent !== 'No Parent' ? parent.parentTask : parent;
     this.searchParent = '';
   }
 
   selectUser = function (user) {
-    this.task.user = user.First_Name + " " + user.Last_Name;
+    this.task.user = user.firstName + " " + user.lastName;
     this.searchUser = '';
   }
 
@@ -191,13 +186,13 @@ export class AddTaskComponent implements OnInit {
 
   updateTask = function () {
     this.request = {
-      '_id': this.updateData._id,
-      'Parent_ID': this.task.Parent_ID,
-      'Project_ID': this.updateData.Project_ID,
-      'Task': this.task.TaskName,
-      'Start_Date': this.task.startDate,
-      'End_Date': this.task.endDate,
-      'Priority': this.task.Priority
+      'taskId': this.updateData.taskId,
+      'parentId': this.task.parentId,
+      'projectId': this.updateData.projectId,
+      'task': this.task.task,
+      'startDate': this.task.startDate,
+      'endDate': this.task.endDate,
+      'priority': this.task.priority
     };
     this.BackendApiService.updateTask(this.request)
       .subscribe(    //receive the data from service
@@ -214,12 +209,12 @@ export class AddTaskComponent implements OnInit {
 
   getParentByFilter = function (id) {
     let parent = this.parentTasksCopy.find(x => x._id === id);
-    return parent.Parent_Task;
+    return parent.parentTask;
   }
 
   getProjectByFilter = function (id) {
     let project = this.projectsCopy.find(x => x._id === id);
-    return project.Project;
+    return project.project;
   }
 
 }
