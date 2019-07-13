@@ -11,7 +11,7 @@ export class AddUserComponent implements OnInit {
   user = {
     firstName: '',
     lastName: '',
-    employeeID: '',
+    empId: '',
     edit: false
   };
   users: Object[];
@@ -41,9 +41,9 @@ export class AddUserComponent implements OnInit {
 
   registerUser() {
     this.request = {
-      'First_Name': this.user.firstName,
-      'Last_Name': this.user.lastName,
-      'Employee_ID': this.user.employeeID
+      'firstName': this.user.firstName,
+      'lastName': this.user.lastName,
+      'empId': this.user.empId
     };
     this.BackendApiService.addUser(this.request)
       .subscribe(    //receive the data from service
@@ -70,14 +70,14 @@ export class AddUserComponent implements OnInit {
     this.user = {
       'edit': true
     };
-    this.user._id = user._id;
-    this.user.firstName = user.First_Name;
-    this.user.lastName = user.Last_Name;
-    this.user.employeeID = user.Employee_ID;
+    this.user.userId = user.userId;
+    this.user.firstName = user.firstName;
+    this.user.lastName = user.lastName;
+    this.user.empId = user.empId;
   }
 
-  updateUser = function (user) {
-    this.BackendApiService.updateUser(user).subscribe((res) => {
+  updateUser = function (user,userId) {
+    this.BackendApiService.updateUser(user,user.userId).subscribe((res) => {
       document.getElementById('alert').innerHTML = 'Updated User Successfully!';
       document.getElementById('alert').classList.remove('d-none');
       this.getUersList();
@@ -100,8 +100,7 @@ export class AddUserComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    console.log("Testing destroy");
+    console.log("Destroy Method:");
   }
-
 
 }

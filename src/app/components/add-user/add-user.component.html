@@ -25,7 +25,7 @@
             <div class="form-group row">
                 <label for="employeeId" class="col-sm-3 col-form-label">*Employee ID:</label>
                 <div class="col-sm-8">
-                    <input type="text" name="employeeId" [(ngModel)]="user.employeeID" class="form-control"
+                    <input type="text" name="employeeId" [(ngModel)]="user.empId" class="form-control"
                         id="employeeId" required #employeeId="ngModel">
                         <div [hidden]="employeeId.valid || employeeId.pristine" class="alert alert-danger">
                             Employee Id is required
@@ -37,11 +37,10 @@
                 <button type="button" class="btn btn-secondary  mr-2" (click)="registerUser()"
                     [disabled]="!addUser.form.valid">Add </button>
                     <input type="reset" class="btn btn-secondary" value="Reset" id="reset">
-                <!-- <button type="button" class="btn btn-secondary" (click)="reset()">Reset</button> -->
             </div>
 
             <div class="col-sm-9 text-center" [hidden]="!user.edit">
-                <button type="button" class="btn btn-secondary  mr-2" (click)="updateUser(user)" [disabled]="!addUser.form.valid">Update </button>
+                <button type="button" class="btn btn-secondary  mr-2" (click)="updateUser(user,user.userId)" [disabled]="!addUser.form.valid">Update </button>
                 <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
             </div>
         </form>
@@ -51,22 +50,22 @@
     <div class="view-users col-sm-12">
         <div class="row pb-3 mb-2">
             <input class="col-sm-5 mr-md-5 mr-sm-3 form-control" type="search" name="search" [(ngModel)]="search" placeholder="search.." />
-            <span class="mt-2 mr-3"> Sort:</span> <button type="button" class="btn btn-secondary  mr-2" (click)="filterUsers('First_Name')">First Name
+            <span class="mt-2 mr-3"> Sort:</span> <button type="button" class="btn btn-secondary  mr-2" (click)="filterUsers('firstName')">First Name
             </button>
-            <button type="button" class="btn btn-secondary  mr-2" (click)="filterUsers('Last_Name')">Last Name </button>
-            <button type="button" class="btn btn-secondary" (click)="filterUsers('Employee_ID')">ID </button>
+            <button type="button" class="btn btn-secondary  mr-2" (click)="filterUsers('lastName')">Last Name </button>
+            <button type="button" class="btn btn-secondary" (click)="filterUsers('empId')">Emp ID </button>
         </div>
         <ul class="col-sm-12 list-group">
-            <li *ngFor="let user of users |filter : search: 'First_Name'" class=" list-group-item">
+            <li *ngFor="let user of users |filter : search: 'firstName'" class=" list-group-item">
                 <div class="row">
                     <div class="col-sm-9">
-                        <input type="text" readonly class="form-control mb-2" [value]="user.First_Name">
-                        <input type="text" readonly class="form-control mb-2" value="{{user.Last_Name}}">
-                        <input type="text" readonly class="form-control" value="{{user.Employee_ID}}">
+                        <input type="text" readonly class="form-control mb-2" [value]="user.firstName">
+                        <input type="text" readonly class="form-control mb-2" value="{{user.lastName}}">
+                        <input type="text" readonly class="form-control" value="{{user.empId}}">
                     </div>
                     <div class="col-sm-3">
                         <button type="button" class="btn btn-secondary col-sm-10 mb-2" (click)="EditUser(user)">Edit </button>
-                        <button type="button" class="btn btn-secondary col-sm-10 mb-2" (click)="deleteUser(user._id)">Delete</button>
+                        <button type="button" class="btn btn-secondary col-sm-10 mb-2" (click)="deleteUser(user.userId)">Delete</button>
                     </div>
                 </div>
 

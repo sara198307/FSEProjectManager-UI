@@ -17,7 +17,7 @@ export class BackendApiService {
   }
   
   addUser(user) {
-    return this.httpService.post("/api/adduser", user)
+    return this.httpService.post("http://localhost:8080/addUser", user)
       .pipe(map(response => {    //receive the resp from rest api 
         return response.json();   //sending it back to component thru service
       }));
@@ -31,8 +31,8 @@ export class BackendApiService {
   }
 
 
-  updateUser(newObj) {
-    return this.httpService.put("/api/updateUser", newObj)
+  updateUser(newObj, userId) {
+    return this.httpService.put("http://localhost:8080/updateUser/",newObj, userId)
       .pipe(map(response => {    //receive the resp from rest api 
         return response.json();   //sending it back to component thru service
       }));
@@ -40,7 +40,7 @@ export class BackendApiService {
 
 
   deleteUser(userId) {
-    return this.httpService.delete("/api/users/" + userId)
+    return this.httpService.delete("http://localhost:8080/deleteUser/" + userId)
       .pipe(map(response => {    //receive the resp from rest api 
         return response.json();   //sending it back to component thru service
       }));
