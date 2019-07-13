@@ -38,30 +38,30 @@ export class ViewTaskComponent implements OnInit {
   }
 
   getParentByFilter = function (id) {
-    let parent = this.parentTasksCopy.find(x => x._id === id);
-    return parent.Parent_Task;
+    let parent = this.parentTasksCopy.find(x => x.parentId === id);
+    return parent.parentTask;
   }
 
   getTasksList = function (id) {
-    this.BackendApiService.getTasksList(id).subscribe((res) => {
+    this.BackendApiService.getTasksbyProjectId(id).subscribe((res) => {
       this.tasks = res;
       this.tasksCopy = res;
     })
   }
 
   selectProject = function (proj) {
-    this.Project_ID = proj._id;
-    this.Project = proj.Project;
+    this.projectId = proj.projectId;
+    this.project = proj.project;
     this.searchProject = '';
-    this.getTasksList(this.Project_ID);
+    this.getTasksList(this.projectId);
   }
 
   EndTask = function(id){
     var request={
-      '_id':id,
-      'Status': true
+      'taskId':id,
+      'Status': "Completed"
     };
-    this.BackendApiService.updateTask(request).subscribe((res) => {
+    this.BackendApiService.updateTask(request,id).subscribe((res) => {
     })
   }
 

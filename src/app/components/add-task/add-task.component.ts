@@ -84,7 +84,7 @@ export class AddTaskComponent implements OnInit {
       this.parentTasks = ptasks;
       this.parentTasksCopy = ptasks;
       if (this.updateData && this.updateData.edit) {
-        this.task.parent = this.getParentByFilter(this.updateData.projectId);
+        this.task.parent = this.getParentByFilter(this.updateData.parentId);
       }
 
     });
@@ -194,7 +194,7 @@ export class AddTaskComponent implements OnInit {
       'endDate': this.task.endDate,
       'priority': this.task.priority
     };
-    this.BackendApiService.updateTask(this.request)
+    this.BackendApiService.updateTask(this.request,this.updateData.taskId)
       .subscribe(    //receive the data from service
         (value) => {
           document.getElementById('alert').innerHTML = 'Updated Task Successfully!';
@@ -208,12 +208,12 @@ export class AddTaskComponent implements OnInit {
   }
 
   getParentByFilter = function (id) {
-    let parent = this.parentTasksCopy.find(x => x._id === id);
+    let parent = this.parentTasksCopy.find(x => x.parentId === id);
     return parent.parentTask;
   }
 
   getProjectByFilter = function (id) {
-    let project = this.projectsCopy.find(x => x._id === id);
+    let project = this.projectsCopy.find(x => x.projectId === id);
     return project.project;
   }
 

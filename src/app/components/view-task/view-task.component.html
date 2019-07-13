@@ -3,15 +3,14 @@
     <div class="form-group row">
       <label for="project" class="col-xl-1 col-md-2 col-form-label">Project:</label>
       <div class="col-xl-6 col-md-10">
-        <input class="form-control col-sm-9 float-left mr-3" type="text" name="project" [(ngModel)]="Project"
+        <input class="form-control col-sm-9 float-left mr-3" type="text" name="project" [(ngModel)]="project"
           id="project">
         <button type="button" class="btn btn-secondary pl-1 col-sm-2" data-toggle="modal"
           data-target="#projectModal">search</button>
       </div>
-      <span class="mt-3 mr-2">Sort Task By :</span> <button type="button" class="btn btn-secondary float-left mr-2" (click)="filterUsers('Start_Date')">Start
-        Date</button>
-      <button type="button" class="btn btn-secondary float-left mr-2" (click)="filterUsers('End_Date')">End Date</button>
-      <button type="button" class="btn btn-secondary float-left mr-2" (click)="filterUsers('Priority')">Priority</button>
+      <span class="mt-3 mr-2">Sort Task By :</span> <button type="button" class="btn btn-secondary float-left mr-2" (click)="filterUsers('Start_Date')">Start Date</button>
+      <button type="button" class="btn btn-secondary float-left mr-2" (click)="filterUsers('endDate')">End Date</button>
+      <button type="button" class="btn btn-secondary float-left mr-2" (click)="filterUsers('priority')">Priority</button>
       <button type="button" class="btn btn-secondary" (click)="filterUsers('Status')">Completed</button>
     </div>
   </div>
@@ -27,8 +26,8 @@
         <div class="modal-body">
           <input type="search" class="form-control" placeholder="Search" name="search" [(ngModel)]="searchProject" />
           <ul>
-            <li *ngFor="let proj of projects |filter : searchProject: 'Project'" (click)="selectProject(proj)">
-              {{proj.Project}}
+            <li *ngFor="let proj of projects |filter : searchProject: 'project'" (click)="selectProject(proj)">
+              {{proj.project}}
             </li>
           </ul>
 
@@ -47,29 +46,29 @@
       <li class="row pb-3 task-item" *ngFor="let task of tasks">
         <div class="col-sm-3">
           <label for="task" class=" col-form-label">Task</label>
-          <input type="text" readonly class="form-control" id="task" value="{{task.Task}}">
+          <input type="text" readonly class="form-control" id="task" value="{{task.task}}">
         </div>
         <div class="col-sm-3">
           <label for="task" class=" col-form-label">Parent Task</label>
           <input type="text" readonly class="form-control" id="taskParent"
-            value="{{task.Parent_ID?  getParentByFilter(task.Parent_ID): 'No Parent'}}">
+            value="{{task.parentId?  getParentByFilter(task.parentId): 'No Parent'}}">
         </div>
         <div class="col-sm-1">
           <label for="task" class=" col-form-label">Priority</label>
-          <input type="text" readonly class="form-control-plaintext" id="taskPriority" value="{{task.Priority}}">
+          <input type="text" readonly class="form-control-plaintext" id="taskPriority" value="{{task.priority}}">
         </div>
         <div class="col-sm-1">
-          <label for="task" class=" col-form-label">Start</label>
-          <input type="text" readonly class="form-control-plaintext" id="startDate" value="{{task.Start_Date}}">
+          <label for="task" class=" col-form-label">Start Date</label>
+          <input type="text" readonly class="form-control-plaintext" id="startDate" value="{{task.startDate}}">
         </div>
         <div class="col-sm-1">
-          <label for="task" class=" col-form-label">End</label>
-          <input type="text" readonly class="form-control-plaintext" id="endDate" value="{{task.End_Date}}">
+          <label for="task" class=" col-form-label">End Date</label>
+          <input type="text" readonly class="form-control-plaintext" id="endDate" value="{{task.endDate}}">
         </div>
         <div class="mt-5">
           <button type="button" class="btn btn-secondary  mr-2" [disabled]="task.Status" (click)="EditTask(task)">Edit
           </button>
-          <button type="button" class="btn btn-secondary" (click)="EndTask(task._id)" [disabled]="task.Status">End Task</button>
+          <button type="button" class="btn btn-secondary" (click)="EndTask(task.taskId)" [disabled]="task.Status">End Task</button>
         </div>
       </li>
     </ul>

@@ -32,7 +32,8 @@ export class BackendApiService {
 
 
   updateUser(newObj, userId) {
-    return this.httpService.put("http://localhost:8080/updateUser/",newObj, userId)
+    console.log("User ID:"+userId)
+    return this.httpService.put("http://localhost:8080/updateUser/"+userId,newObj)
       .pipe(map(response => {    //receive the resp from rest api 
         return response.json();   //sending it back to component thru service
       }));
@@ -40,10 +41,7 @@ export class BackendApiService {
 
 
   deleteUser(userId) {
-    return this.httpService.delete("http://localhost:8080/deleteUser/" + userId)
-      .pipe(map(response => {    //receive the resp from rest api 
-        return response.json();   //sending it back to component thru service
-      }));
+    return this.httpService.delete("http://localhost:8080/deleteUser/"+userId)
   }
 
   // add Project
@@ -92,6 +90,14 @@ export class BackendApiService {
         return response.json();   //sending it back to component thru service
       }));
   }
+ 
+  getTasksbyProjectId(id) {
+    return this.httpService.get("http://localhost:8080/getTasksbyProjectId/"+id)
+      .pipe(map(response => {    //receive the resp from rest api 
+        return response.json();   //sending it back to component thru service
+      }));
+  }
+
   addParentTask(task) {
     return this.httpService.post("http://localhost:8080/addParentTask", task)
       .pipe(map(response => {    //receive the resp from rest api 
@@ -108,7 +114,8 @@ export class BackendApiService {
 
 
   updateTask(newObj,taskId) {
-    return this.httpService.put("http://localhost:8080/updateTask/", newObj,taskId)
+
+    return this.httpService.put("http://localhost:8080/updateTask/"+taskId, newObj,)
       .pipe(map(response => {    //receive the resp from rest api 
         return response.json();   //sending it back to component thru service
       }));
