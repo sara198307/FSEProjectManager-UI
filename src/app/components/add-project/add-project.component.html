@@ -1,3 +1,163 @@
-<p>
-  add-project works!
-</p>
+<div class="shadow-none mb-5 col-sm-10 col-md-12 col-lg-12 col-xl-10 rounded">
+
+  <div class="alert alert-success d-none" role="alert" id="alert"> </div>
+  <div>
+    <form #addProj="ngForm" class="col-sm-12 mt-5">
+      <div class="form-group row">
+        <label for="projectname" class="col-sm-2 col-form-label">*Project:</label>
+        <div class="col-sm-12 col-md-12 col-lg-10 col-xl-8">
+          <input type="text" name="projectname" [(ngModel)]="project.Project" class="form-control" id="Project" required
+            #projectname="ngModel">
+          <div [hidden]="projectname.valid || projectname.pristine" class="alert alert-danger">
+            Project Name is required
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-12 col-md-12 col-lg-10 col-xl-8 row ml-0">
+          <input type="checkbox" class="mt-2" name="check" [(ngModel)]="project.checked" (change)="assignDefault()"
+            aria-label="Checkbox for Select Start and End Date"> <span class="mt-1 ml-2 mr-2"> Start and End Date</span>
+          <label for="startDt"> </label>
+          <input type="date" class="form-control col-sm-4  mr-3" id="startDt" [min]="currentDate" name="startDt"
+            [(ngModel)]="project.startDate" placeholder="Start date" [disabled]="!project.checked"
+            (change)='checkDateErr(project.startDate,project.endDate)'>
+          <label for="endDt"> </label>
+          <input type="date" class="form-control col-sm-4" id="endDt" name="endDt" [(ngModel)]="project.endDate"
+            (change)='checkDateErr(project.startDate,project.endDate)' placeholder="End Date"
+            [disabled]="!project.checked" [min]="currentDate">
+          <div class="alert-danger">{{errMessage}}</div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="priority" class="col-sm-2 col-form-label">Priority: </label>
+        <div class="col-sm-12 col-md-12 col-lg-10 col-xl-8">
+          <span class="">0</span> <span class="float-right">30</span>
+          <input type="range" class="form-control slider" id="priority" [min]="0" [max]="30" name="priority"
+            placeholder="priority" [(ngModel)]="Priority">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="manager" class="col-sm-2 col-form-label">Manager:</label>
+        <div class="col-sm-12 col-md-12 col-lg-10 col-xl-8">
+          <input class="form-control col-sm-9 float-left mr-3" type="text" readonly [(ngModel)]="project.Manager"
+            name="manager" [ngModelOptions]="{standalone: true}" id="manager">
+          <button type="button" class="btn btn-secondary pl-1 col-sm-2" data-toggle="modal"
+            data-target="#myModal">search</button>
+        </div>
+      </div>
+
+      <!-- The Modal -->
+      <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Select Manager</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <input type="search" class="form-control" placeholder="Search by user first name" name="search" [(ngModel)]="searchManager" />
+              <ul>
+                <li *ngFor="let user of users |filter : searchManager: 'First_Name'" (click)="selectManager(user)">
+                  {{user.First_Name}} {{user.Last_Name}}
+                </li>
+              </ul>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-9 text-center">
+        <button type="submit" class="btn btn-secondary  mr-2" (click)="addProject(project)" [hidden]="project.edit"
+          [disabled]="!addProj.form.valid">Add
+        </button>
+        <button type="button" class="btn btn-secondary  mr-2" (click)="updateProject(project)" [hidden]="!project.edit"
+          [disabled]="!addProj.form.valid">Update </button>
+        <input type="reset" class="btn btn-secondary" value="Reset" id="reset">
+      </div>
+
+    </form>
+  </div>
+  <hr size="30" class="border border-secondary">
+
+  <div class="view-users col-sm-12">
+    <div class="mb-2">
+      <div class="col-sm-12">
+        <input class="col-sm-10 form-control mb-4" type="search" name="search" [(ngModel)]="search"
+          placeholder="search by project name" />
+      </div>
+
+      <span class="mr-3">Sort By: </span><button type="button" class="btn btn-secondary col-sm-2 mr-2"
+        (click)="filterProjects('Start_Date')">Start
+        Date</button>
+      <button type="button" class="btn btn-secondary col-sm-2 mr-2" (click)="filterProjects('End_Date')">End Date
+      </button>
+      <button type="button" class="btn btn-secondary col-sm-2 mr-2" (click)="filterProjects('Priority')">Priority
+      </button>
+      <button type="button" class="btn btn-secondary col-sm-2 mr-2" (click)="filterProjects('NumOfTasksComp')">Completed
+      </button>
+    </div>
+    <ul class="col-sm-12 list-group">
+      <li *ngFor="let proj of projects |filter : search: 'Project'" class=" list-group-item">
+        <div class="row">
+          <div class="col-sm-8 form-control">
+            <label for="Project" class="col-form-label">Project: </label> {{proj.Project}}
+            <!-- <input class="col-sm-6" type="text" readonly [(ngModel)]="proj.Project" name="Project"
+              [ngModelOptions]="{standalone: true}" class="form-control"> -->
+            <div class="row">
+              <p class="col-sm-6 mb-0">
+                <label for="NumOfTasks" class="col-form-label">No. of Tasks: </label> {{proj.NumOfTasks}}
+              </p>
+              <!-- <input class="col-sm-3" type="text"
+                readonly [(ngModel)]="proj.NumOfTasks" name="NumOfTasks" [ngModelOptions]="{standalone: true}"
+                class="form-control"> -->
+              <p class="col-sm-6 mb-0">
+                <label for="completed" class="col-form-label">Completed: </label> {{proj.NumOfTasksComp}}
+              </p>
+              <!-- <input class="col-sm-3" type="text"
+                readonly [(ngModel)]="proj.NumOfTasksComp" name="completed" [ngModelOptions]="{standalone: true}"
+                class="form-control"> -->
+            </div>
+            <div class="row">
+              <p class="col-sm-6 mb-0">
+                <label for="startDt" class="col-form-label">Start Date: </label> {{proj.Start_Date}}
+              </p>
+              <p class="col-sm-6 mb-0">
+                <label for="endDt" class="col-form-label">End Date: </label> {{proj.End_Date}}
+              </p>
+              <!-- <input class="col-sm-3" type="text"
+                readonly [(ngModel)]="proj.Start_Date" name="startDt" [ngModelOptions]="{standalone: true}"
+                class="form-control"> -->
+
+              <!-- <input class="col-sm-3" type="text" readonly
+                [(ngModel)]="proj.End_Date" name="endDt" [ngModelOptions]="{standalone: true}" class="form-control"> -->
+            </div>
+
+          </div>
+          <div class="col-sm-2">
+            <label for="priority" class="col-form-label">Priority: </label>
+            <p class="pb-5 form-control">{{proj.Priority}}</p>
+            <!-- Priority: <input class="col-sm-9" type="text" readonly [(ngModel)]="proj.Priority" name="endDt"
+              [ngModelOptions]="{standalone: true}" class="form-control"> -->
+
+          </div>
+          <div class="col-sm-2 mt-3">
+            <button type="button" class="btn btn-secondary col-sm-10 mb-2" (click)="EditProject(proj)">Update </button>
+            <button type="button" class="btn btn-secondary col-sm-10 mr-2" (click)="suspend()">Suspend </button>
+          </div>
+        </div>
+
+      </li>
+    </ul>
+  </div>
+
+
+</div>

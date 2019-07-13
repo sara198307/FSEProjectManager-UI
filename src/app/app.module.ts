@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -8,6 +9,10 @@ import { AddProjectComponent } from './components/add-project/add-project.compon
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { ViewTaskComponent } from './components/view-task/view-task.component';
+import { FormsModule }   from '@angular/forms';
+import { RestApiService } from './services/rest-api.service';
+import { FilterPipe} from './pipes/filter.pipe';
+import { OrderModule } from 'ngx-order-pipe'; 
 
 //creating routes with path and component
 const APP_ROUTES: Routes = [
@@ -25,13 +30,17 @@ const APP_ROUTES: Routes = [
     AddProjectComponent,
     AddTaskComponent,
     AddUserComponent,
-    ViewTaskComponent
+    ViewTaskComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RouterModule.forRoot(APP_ROUTES),
+    HttpModule,
+    OrderModule
   ],
-  providers: [],
+  providers: [RestApiService,FilterPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
