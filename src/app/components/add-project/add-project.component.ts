@@ -109,7 +109,7 @@ export class AddProjectComponent implements OnInit {
     this.RestApiService.getProjectsList().subscribe((res) => {
       this.projects = res;
       this.projectsCopy = res;
-      //this.getTasksList();
+      this.getTasksList();
     })
   }
 
@@ -123,9 +123,9 @@ export class AddProjectComponent implements OnInit {
   getTasksList = function () {
     this.projects.forEach(element => {
       let count = 0;
-      let id = element._id;
+      let id = element.projectId;
       element.NumOfTasksComp = count;
-      this.RestApiService.getTasksList(id).subscribe((res) => {
+      this.RestApiService.getTasksbyProjectId(id).subscribe((res) => {
         this.tasks = res;
         element.NumOfTasks = res.length;
         res.forEach(task => {
