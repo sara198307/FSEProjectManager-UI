@@ -15,7 +15,7 @@ export class AddProjectComponent implements OnInit {
     'priority': 0,
     'startDate': '',
     'endDate': '',
-    'Manager': '',
+    'manager': '',
     'edit': false,
     'checked': false
   };
@@ -57,7 +57,7 @@ export class AddProjectComponent implements OnInit {
       'startDate': this.project.startDate,
       'endDate': this.project.endDate,
       'priority': this.priority,
-      'Manager': this.project.Manager
+      'manager': this.project.manager
     };
     this.RestApiService.addProject(request).subscribe((res) => {
       document.getElementById('alert').innerHTML = 'Added Project Successfully!';
@@ -80,7 +80,7 @@ export class AddProjectComponent implements OnInit {
     this.project.project = proj.project;
     this.project.startDate = proj.atartDate;
     this.project.endDate = proj.endDate;
-    this.project.Manager = proj.Manager;
+    this.project.manager = proj.manager;
   }
 
   updateProject = function () {
@@ -90,7 +90,7 @@ export class AddProjectComponent implements OnInit {
       'startDate': this.project.startDate,
       'endDate': this.project.endDate,
       'priority': this.priority,
-      'Manager': this.project.Manager
+      'manager': this.project.manager
     };
     this.RestApiService.updateProject(request,this.project.projectId).subscribe((res) => {
       document.getElementById('alert').innerHTML = 'Updated Project Successfully!';
@@ -153,7 +153,7 @@ export class AddProjectComponent implements OnInit {
   }
 
   selectManager = function (user) {
-    this.project.Manager = user.firstName + " " + user.lastName;
+    this.project.manager = user.firstName + " " + user.lastName;
     this.searchManager = '';
   }
 
