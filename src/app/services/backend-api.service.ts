@@ -71,10 +71,7 @@ export class BackendApiService {
 
   // Delete Project
   deleteProject(projectId) {
-    return this.httpService.delete("/api/projects/:" + projectId)
-      .pipe(map(response => {    //receive the resp from rest api 
-        return response.json();   //sending it back to component thru service
-      }));
+    return this.httpService.delete("http://localhost:8080/deleteProject/" + projectId)
   }
 
   addTask(task) {

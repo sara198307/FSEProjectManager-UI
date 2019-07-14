@@ -105,6 +105,28 @@ export class AddProjectComponent implements OnInit {
 
   }
 
+  suspend = function () {
+    var request = {
+      'projectId': this.project.projectId,
+      'project': this.project.project,
+      'startDate': this.project.startDate,
+      'endDate': this.project.endDate,
+      'priority': this.priority,
+      'manager': this.project.manager
+    };
+    this.RestApiService.deleteProject(this.project.projectId).subscribe((res) => {
+      document.getElementById('alert').innerHTML = 'Project Suspended Successfully!';
+      document.getElementById('alert').classList.remove('d-none');
+      this.reset();
+      this.project.edit = false;
+      this.getProjectsList();
+    });
+    setTimeout(function () {
+      document.getElementById('alert').classList.add('d-none');
+    }, 5000);
+
+  }
+
   getProjectsList = function () {
     this.RestApiService.getProjectsList().subscribe((res) => {
       this.projects = res;
