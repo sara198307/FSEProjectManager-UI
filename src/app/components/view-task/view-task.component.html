@@ -5,13 +5,13 @@
       <div class="col-xl-6 col-md-10">
         <input class="form-control col-sm-9 float-left mr-3" type="text" name="project" [(ngModel)]="project"
           id="project">
-        <button type="button" class="btn btn-secondary pl-1 col-sm-2" data-toggle="modal"
+        <button type="button" class="btn btn-info pl-1 col-sm-2" data-toggle="modal"
           data-target="#projectModal">search</button>
       </div>
-      <span class="mt-3 mr-2">Sort Task By :</span> <button type="button" class="btn btn-secondary float-left mr-2" (click)="filterUsers('Start_Date')">Start Date</button>
-      <button type="button" class="btn btn-secondary float-left mr-2" (click)="filterUsers('endDate')">End Date</button>
-      <button type="button" class="btn btn-secondary float-left mr-2" (click)="filterUsers('priority')">Priority</button>
-      <button type="button" class="btn btn-secondary" (click)="filterUsers('status')">Completed</button>
+      <span class="mt-3 mr-2">Sort Task By :</span> <button type="button" class="btn btn-info float-left mr-2" (click)="filterUsers('Start_Date')">Start Date</button>
+      <button type="button" class="btn btn-info float-left mr-2" (click)="filterUsers('endDate')">End Date</button>
+      <button type="button" class="btn btn-info float-left mr-2" (click)="filterUsers('priority')">Priority</button>
+      <button type="button" class="btn btn-info" (click)="filterUsers('status')">Completed</button>
     </div>
   </div>
 
@@ -66,9 +66,9 @@
           <input type="text" readonly class="form-control-plaintext" id="endDate" value="{{task.endDate}}">
         </div>
         <div class="mt-5">
-          <button type="button" class="btn btn-secondary  mr-2" [disabled]="task.Status" (click)="EditTask(task)">Edit
+          <button type="button" class="btn btn-info  mr-2" [disabled]="task.Status" (click)="EditTask(task)">Edit
           </button>
-          <button type="button" class="btn btn-secondary" (click)="EndTask(task,task.taskId)" [disabled]="task.Status">End Task</button>
+          <button type="button" class="btn btn-info" (click)="EndTask(task,task.taskId)" [disabled]="task.Status">End Task</button>
         </div>
       </li>
     </ul>

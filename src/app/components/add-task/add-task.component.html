@@ -7,7 +7,7 @@
         <div class="col-sm-8">
           <input class="form-control col-sm-9 float-left mr-3" type="text" readonly name="project"
             [(ngModel)]="task.project" id="project">
-          <button type="button" class="btn btn-secondary pl-1 col-sm-2" data-toggle="modal"
+          <button type="button" class="btn btn-info pl-1 col-sm-2" data-toggle="modal"
             [disabled]="task.checked ||updateData.edit" data-target="#projectModal">search</button>
         </div>
       </div>
@@ -67,7 +67,7 @@
         <div class="col-sm-8">
           <input class="form-control col-sm-9 float-left mr-3" type="text" readonly name="parenttask"
             [(ngModel)]="task.parent" id="parent">
-          <button type="button" class="btn btn-secondary pl-1 col-sm-2" data-toggle="modal" [disabled]="task.checked"
+          <button type="button" class="btn btn-info pl-1 col-sm-2" data-toggle="modal" [disabled]="task.checked"
             data-target="#parentModal">search</button>
         </div>
       </div>
@@ -118,7 +118,7 @@
         <div class="col-sm-8">
           <input class="form-control col-sm-9 float-left mr-3" type="text" readonly name="parent"
             [(ngModel)]="task.user" id="parent">
-          <button type="button" class="btn btn-secondary pl-1 col-sm-2" data-toggle="modal" [disabled]="task.checked"
+          <button type="button" class="btn btn-info pl-1 col-sm-2" data-toggle="modal" [disabled]="task.checked"
             data-target="#userModal">search</button>
         </div>
       </div>
@@ -148,12 +148,12 @@
       </div>
 
       <div class="col-sm-9 float-right" [hidden]="updateData.edit">
-        <button type="button" class="btn btn-secondary  mr-2" (click)="addTask(task)" [disabled]="!addtask.form.valid">Add Task </button>
-        <button type="reset" class="btn btn-secondary" id="reset">Reset</button>
+        <button type="button" class="btn btn-info  mr-2" (click)="addTask(task)" [disabled]="!addtask.form.valid">Add Task </button>
+        <button type="reset" class="btn btn-info" id="reset">Reset</button>
       </div>
       <div class="col-sm-9 float-right" [hidden]="!updateData.edit">
-        <button type="button" class="btn btn-secondary  mr-2" (click)="updateTask(task)" [disabled]="!addtask.form.valid">Update </button>
-        <button type="button" class="btn btn-secondary" (click)="Cancel()">Cancel</button>
+        <button type="button" class="btn btn-info  mr-2" (click)="updateTask(task)" [disabled]="!addtask.form.valid">Update </button>
+        <button type="button" class="btn btn-info" (click)="Cancel()">Cancel</button>
       </div>
 
     </form>

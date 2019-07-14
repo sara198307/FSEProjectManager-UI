@@ -45,7 +45,7 @@
         <div class="col-sm-12 col-md-12 col-lg-10 col-xl-8">
           <input class="form-control col-sm-9 float-left mr-3" type="text" readonly [(ngModel)]="project.manager"
             name="manager" [ngModelOptions]="{standalone: true}" id="manager">
-          <button type="button" class="btn btn-secondary pl-1 col-sm-2" data-toggle="modal"
+          <button type="button" class="btn btn-info pl-1 col-sm-2" data-toggle="modal"
             data-target="#myModal">search</button>
         </div>
       </div>
@@ -76,12 +76,12 @@
       </div>
 
       <div class="col-sm-9 text-center">
-        <button type="submit" class="btn btn-secondary  mr-2" (click)="addProject(project)" [hidden]="project.edit"
+        <button type="submit" class="btn btn-info  mr-2" (click)="addProject(project)" [hidden]="project.edit"
           [disabled]="!addProj.form.valid">Add
         </button>
-        <button type="button" class="btn btn-secondary  mr-2" (click)="updateProject(project)" [hidden]="!project.edit"
+        <button type="button" class="btn btn-info  mr-2" (click)="updateProject(project)" [hidden]="!project.edit"
           [disabled]="!addProj.form.valid">Update </button>
-        <input type="reset" class="btn btn-secondary" value="Reset" id="reset">
+        <input type="reset" class="btn btn-info" value="Reset" id="reset">
       </div>
 
     </form>
@@ -95,14 +95,14 @@
           placeholder="search by project name" />
       </div>
 
-      <span class="mr-3">Sort By: </span><button type="button" class="btn btn-secondary col-sm-2 mr-2"
+      <span class="mr-3">Sort By: </span><button type="button" class="btn btn-info col-sm-2 mr-2"
         (click)="filterProjects('startDate')">Start
         Date</button>
-      <button type="button" class="btn btn-secondary col-sm-2 mr-2" (click)="filterProjects('endDate')">End Date
+      <button type="button" class="btn btn-info col-sm-2 mr-2" (click)="filterProjects('endDate')">End Date
       </button>
-      <button type="button" class="btn btn-secondary col-sm-2 mr-2" (click)="filterProjects('priority')">Priority
+      <button type="button" class="btn btn-info col-sm-2 mr-2" (click)="filterProjects('priority')">Priority
       </button>
-      <button type="button" class="btn btn-secondary col-sm-2 mr-2" (click)="filterProjects('NumOfTasksComp')">Completed
+      <button type="button" class="btn btn-info col-sm-2 mr-2" (click)="filterProjects('NumOfTasksComp')">Completed
       </button>
     </div>
     <ul class="col-sm-12 list-group">
@@ -110,21 +110,16 @@
         <div class="row">
           <div class="col-sm-8 form-control">
             <label for="Project" class="col-form-label">Project: </label> {{proj.project}}
-            <!-- <input class="col-sm-6" type="text" readonly [(ngModel)]="proj.Project" name="Project"
-              [ngModelOptions]="{standalone: true}" class="form-control"> -->
+            
             <div class="row">
               <p class="col-sm-6 mb-0">
                 <label for="NumOfTasks" class="col-form-label">No. of Tasks: </label> {{proj.NumOfTasks}}
               </p>
-              <!-- <input class="col-sm-3" type="text"
-                readonly [(ngModel)]="proj.NumOfTasks" name="NumOfTasks" [ngModelOptions]="{standalone: true}"
-                class="form-control"> -->
+             
               <p class="col-sm-6 mb-0">
                 <label for="completed" class="col-form-label">Completed: </label> {{proj.NumOfTasksComp}}
               </p>
-              <!-- <input class="col-sm-3" type="text"
-                readonly [(ngModel)]="proj.NumOfTasksComp" name="completed" [ngModelOptions]="{standalone: true}"
-                class="form-control"> -->
+             
             </div>
             <div class="row">
               <p class="col-sm-6 mb-0">
@@ -140,13 +135,12 @@
           <div class="col-sm-2">
             <label for="priority" class="col-form-label">Priority: </label>
             <p class="pb-5 form-control">{{proj.priority}}</p>
-            <!-- Priority: <input class="col-sm-9" type="text" readonly [(ngModel)]="proj.Priority" name="endDt"
-              [ngModelOptions]="{standalone: true}" class="form-control"> -->
+           
 
           </div>
           <div class="col-sm-2 mt-3">
-            <button type="button" class="btn btn-secondary col-sm-10 mb-2" (click)="EditProject(proj)">Update </button>
-            <button type="button" class="btn btn-secondary col-sm-10 mr-2" (click)="suspend(proj)">Suspend </button>
+            <button type="button" class="btn btn-info col-sm-10 mb-2" (click)="EditProject(proj)">Update </button>
+            <button type="button" class="btn btn-info col-sm-10 mr-2" (click)="suspend(proj)">Suspend </button>
           </div>
         </div>
 
