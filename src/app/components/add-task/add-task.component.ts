@@ -128,7 +128,8 @@ export class AddTaskComponent implements OnInit {
         'task': this.task.task,
         'startDate': this.task.startDate,
         'endDate': this.task.endDate,
-        'priority': this.task.priority
+        'priority': this.task.priority,
+        'status': "Active"
       };
       this.BackendApiService.addTask(this.request)
       .subscribe(    //receive the data from service

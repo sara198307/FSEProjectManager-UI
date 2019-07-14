@@ -56,12 +56,17 @@ export class ViewTaskComponent implements OnInit {
     this.getTasksList(this.projectId);
   }
 
-  EndTask = function(id){
-    var request={
-      'taskId':id,
-      'Status': "Completed"
+  EndTask = function(task,id){
+     this.request={
+      'parentId': task.parentId,
+      'projectId': task.projectId,
+      'task': task.task,
+      'startDate': task.startDate,
+      'endDate': task.endDate,
+      'priority': task.priority,
+      'status': "Completed"
     };
-    this.BackendApiService.updateTask(request,id).subscribe((res) => {
+    this.BackendApiService.updateTask(this.request,id).subscribe((res) => {
     })
   }
 

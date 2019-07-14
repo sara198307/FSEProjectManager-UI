@@ -151,7 +151,7 @@ export class AddProjectComponent implements OnInit {
         this.tasks = res;
         element.NumOfTasks = res.length;
         res.forEach(task => {
-          (task.Status == true) ? count++ : count;
+          (task.status == 'Completed') ? count++ : count;
           element.NumOfTasksComp = count;
         });
       })

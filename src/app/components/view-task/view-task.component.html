@@ -11,7 +11,7 @@
       <span class="mt-3 mr-2">Sort Task By :</span> <button type="button" class="btn btn-secondary float-left mr-2" (click)="filterUsers('Start_Date')">Start Date</button>
       <button type="button" class="btn btn-secondary float-left mr-2" (click)="filterUsers('endDate')">End Date</button>
       <button type="button" class="btn btn-secondary float-left mr-2" (click)="filterUsers('priority')">Priority</button>
-      <button type="button" class="btn btn-secondary" (click)="filterUsers('Status')">Completed</button>
+      <button type="button" class="btn btn-secondary" (click)="filterUsers('status')">Completed</button>
     </div>
   </div>
 
@@ -68,7 +68,7 @@
         <div class="mt-5">
           <button type="button" class="btn btn-secondary  mr-2" [disabled]="task.Status" (click)="EditTask(task)">Edit
           </button>
-          <button type="button" class="btn btn-secondary" (click)="EndTask(task.taskId)" [disabled]="task.Status">End Task</button>
+          <button type="button" class="btn btn-secondary" (click)="EndTask(task,task.taskId)" [disabled]="task.Status">End Task</button>
         </div>
       </li>
     </ul>

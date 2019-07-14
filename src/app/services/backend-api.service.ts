@@ -112,7 +112,7 @@ export class BackendApiService {
 
   updateTask(newObj,taskId) {
 
-    return this.httpService.put("http://localhost:8080/updateTask/"+taskId, newObj,)
+    return this.httpService.put("http://localhost:8080/updateTask/"+taskId, newObj)
       .pipe(map(response => {    //receive the resp from rest api 
         return response.json();   //sending it back to component thru service
       }));
