@@ -104,7 +104,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /**
- * @license Angular v7.2.14
+ * @license Angular v7.2.15
  * (c) 2010-2019 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -6075,7 +6075,7 @@ function isPlatformWorkerUi(platformId) {
 /**
  * @publicApi
  */
-var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('7.2.14');
+var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('7.2.15');
 
 /**
  * @license
@@ -6557,7 +6557,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "R3BoundTarget", function() { return R3BoundTarget; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /**
- * @license Angular v7.2.14
+ * @license Angular v7.2.15
  * (c) 2010-2019 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -22324,7 +22324,7 @@ function publishFacade(global) {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-var VERSION$1 = new Version('7.2.14');
+var VERSION$1 = new Version('7.2.15');
 
 /**
  * @license
@@ -34042,7 +34042,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /**
- * @license Angular v7.2.14
+ * @license Angular v7.2.15
  * (c) 2010-2019 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -44787,7 +44787,7 @@ var Version = /** @class */ (function () {
 /**
  * @publicApi
  */
-var VERSION = new Version('7.2.14');
+var VERSION = new Version('7.2.15');
 
 /**
  * @license
@@ -58621,7 +58621,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /**
- * @license Angular v7.2.14
+ * @license Angular v7.2.15
  * (c) 2010-2019 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -65143,7 +65143,7 @@ var FormBuilder = /** @class */ (function () {
 /**
  * @publicApi
  */
-var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('7.2.14');
+var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('7.2.15');
 
 /**
  * @license
@@ -65390,7 +65390,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /**
- * @license Angular v7.2.14
+ * @license Angular v7.2.15
  * (c) 2010-2019 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -67253,7 +67253,7 @@ var JsonpModule = /** @class */ (function () {
  * @deprecated see https://angular.io/guide/http
  * @publicApi
  */
-var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('7.2.14');
+var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('7.2.15');
 
 /**
  * @license
@@ -67314,7 +67314,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /**
- * @license Angular v7.2.14
+ * @license Angular v7.2.15
  * (c) 2010-2019 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -67751,7 +67751,7 @@ var CachedResourceLoader = /** @class */ (function (_super) {
 /**
  * @publicApi
  */
-var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('7.2.14');
+var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('7.2.15');
 
 /**
  * @license
@@ -67861,7 +67861,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /**
- * @license Angular v7.2.14
+ * @license Angular v7.2.15
  * (c) 2010-2019 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -70335,7 +70335,7 @@ var By = /** @class */ (function () {
 /**
  * @publicApi
  */
-var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_2__["Version"]('7.2.14');
+var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_2__["Version"]('7.2.15');
 
 /**
  * @license
@@ -70452,7 +70452,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /**
- * @license Angular v7.2.14
+ * @license Angular v7.2.15
  * (c) 2010-2019 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -76193,7 +76193,7 @@ function provideRouterInitializer() {
 /**
  * @publicApi
  */
-var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_2__["Version"]('7.2.14');
+var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_2__["Version"]('7.2.15');
 
 /**
  * @license
@@ -76238,27 +76238,30 @@ var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_2__["Version"]('7.2.14'
 
 /***/ }),
 
-/***/ "./node_modules/ngx-order-pipe/ngx-order-pipe.es5.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/ngx-order-pipe/ngx-order-pipe.es5.js ***!
-  \***********************************************************/
-/*! exports provided: OrderPipe, OrderModule */
+/***/ "./node_modules/ngx-order-pipe/fesm5/ngx-order-pipe.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/ngx-order-pipe/fesm5/ngx-order-pipe.js ***!
+  \*************************************************************/
+/*! exports provided: OrderModule, OrderPipe */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrderPipe", function() { return OrderPipe; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrderModule", function() { return OrderModule; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrderPipe", function() { return OrderPipe; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
 
 var OrderPipe = /** @class */ (function () {
     function OrderPipe() {
     }
+    OrderPipe_1 = OrderPipe;
     /**
      * Check if a value is a string
      *
-     * @param {?} value
-     * @return {?}
+     * @param value
      */
     OrderPipe.isString = function (value) {
         return typeof value === 'string' || value instanceof String;
@@ -76266,22 +76269,20 @@ var OrderPipe = /** @class */ (function () {
     /**
      * Sorts values ignoring the case
      *
-     * @param {?} a
-     * @param {?} b
-     * @return {?}
+     * @param a
+     * @param b
      */
     OrderPipe.caseInsensitiveSort = function (a, b) {
-        if (OrderPipe.isString(a) && OrderPipe.isString(b)) {
+        if (OrderPipe_1.isString(a) && OrderPipe_1.isString(b)) {
             return a.localeCompare(b);
         }
-        return OrderPipe.defaultCompare(a, b);
+        return OrderPipe_1.defaultCompare(a, b);
     };
     /**
      * Default compare method
      *
-     * @param {?} a
-     * @param {?} b
-     * @return {?}
+     * @param a
+     * @param b
      */
     OrderPipe.defaultCompare = function (a, b) {
         if (a === b) {
@@ -76297,8 +76298,8 @@ var OrderPipe = /** @class */ (function () {
     };
     /**
      * Parse expression, split into items
-     * @param {?} expression
-     * @return {?}
+     * @param expression
+     * @returns {string[]}
      */
     OrderPipe.parseExpression = function (expression) {
         expression = expression.replace(/\[(\w+)\]/g, '.$1');
@@ -76308,13 +76309,13 @@ var OrderPipe = /** @class */ (function () {
     /**
      * Get value by expression
      *
-     * @param {?} object
-     * @param {?} expression
-     * @return {?}
+     * @param object
+     * @param expression
+     * @returns {any}
      */
     OrderPipe.getValue = function (object, expression) {
-        for (var /** @type {?} */ i = 0, /** @type {?} */ n = expression.length; i < n; ++i) {
-            var /** @type {?} */ k = expression[i];
+        for (var i = 0, n = expression.length; i < n; ++i) {
+            var k = expression[i];
             if (!(k in object)) {
                 return;
             }
@@ -76330,26 +76331,17 @@ var OrderPipe = /** @class */ (function () {
     /**
      * Set value by expression
      *
-     * @param {?} object
-     * @param {?} value
-     * @param {?} expression
-     * @return {?}
+     * @param object
+     * @param value
+     * @param expression
      */
     OrderPipe.setValue = function (object, value, expression) {
-        var /** @type {?} */ i;
+        var i;
         for (i = 0; i < expression.length - 1; i++) {
             object = object[expression[i]];
         }
         object[expression[i]] = value;
     };
-    /**
-     * @param {?} value
-     * @param {?=} expression
-     * @param {?=} reverse
-     * @param {?=} isCaseInsensitive
-     * @param {?=} comparator
-     * @return {?}
-     */
     OrderPipe.prototype.transform = function (value, expression, reverse, isCaseInsensitive, comparator) {
         if (isCaseInsensitive === void 0) { isCaseInsensitive = false; }
         if (!value) {
@@ -76369,26 +76361,26 @@ var OrderPipe = /** @class */ (function () {
     /**
      * Sort array
      *
-     * @param {?} value
-     * @param {?=} expression
-     * @param {?=} reverse
-     * @param {?=} isCaseInsensitive
-     * @param {?=} comparator
-     * @return {?}
+     * @param value
+     * @param expression
+     * @param reverse
+     * @param isCaseInsensitive
+     * @param comparator
+     * @returns {any[]}
      */
     OrderPipe.prototype.sortArray = function (value, expression, reverse, isCaseInsensitive, comparator) {
-        var /** @type {?} */ isDeepLink = expression && expression.indexOf('.') !== -1;
+        var isDeepLink = expression && expression.indexOf('.') !== -1;
         if (isDeepLink) {
-            expression = OrderPipe.parseExpression(expression);
+            expression = OrderPipe_1.parseExpression(expression);
         }
-        var /** @type {?} */ compareFn;
+        var compareFn;
         if (comparator && typeof comparator === 'function') {
             compareFn = comparator;
         }
         else {
-            compareFn = isCaseInsensitive ? OrderPipe.caseInsensitiveSort : OrderPipe.defaultCompare;
+            compareFn = isCaseInsensitive ? OrderPipe_1.caseInsensitiveSort : OrderPipe_1.defaultCompare;
         }
-        var /** @type {?} */ array = value.sort(function (a, b) {
+        var array = value.sort(function (a, b) {
             if (!expression) {
                 return compareFn(a, b);
             }
@@ -76398,7 +76390,7 @@ var OrderPipe = /** @class */ (function () {
                 }
                 return compareFn(a, b);
             }
-            return compareFn(OrderPipe.getValue(a, expression), OrderPipe.getValue(b, expression));
+            return compareFn(OrderPipe_1.getValue(a, expression), OrderPipe_1.getValue(b, expression));
         });
         if (reverse) {
             return array.reverse();
@@ -76408,37 +76400,37 @@ var OrderPipe = /** @class */ (function () {
     /**
      * Transform Object
      *
-     * @param {?} value
-     * @param {?=} expression
-     * @param {?=} reverse
-     * @param {?=} isCaseInsensitive
-     * @param {?=} comparator
-     * @return {?}
+     * @param value
+     * @param expression
+     * @param reverse
+     * @param isCaseInsensitive
+     * @param comparator
+     * @returns {any[]}
      */
     OrderPipe.prototype.transformObject = function (value, expression, reverse, isCaseInsensitive, comparator) {
-        var /** @type {?} */ parsedExpression = OrderPipe.parseExpression(expression);
-        var /** @type {?} */ lastPredicate = parsedExpression.pop();
-        var /** @type {?} */ oldValue = OrderPipe.getValue(value, parsedExpression);
+        var parsedExpression = OrderPipe_1.parseExpression(expression);
+        var lastPredicate = parsedExpression.pop();
+        var oldValue = OrderPipe_1.getValue(value, parsedExpression);
         if (!Array.isArray(oldValue)) {
             parsedExpression.push(lastPredicate);
             lastPredicate = null;
-            oldValue = OrderPipe.getValue(value, parsedExpression);
+            oldValue = OrderPipe_1.getValue(value, parsedExpression);
         }
         if (!oldValue) {
             return value;
         }
-        OrderPipe.setValue(value, this.transform(oldValue, lastPredicate, reverse, isCaseInsensitive), parsedExpression);
+        OrderPipe_1.setValue(value, this.transform(oldValue, lastPredicate, reverse, isCaseInsensitive), parsedExpression);
         return value;
     };
     /**
      * Apply multiple expressions
      *
-     * @param {?} value
-     * @param {?} expressions
-     * @param {?} reverse
-     * @param {?=} isCaseInsensitive
-     * @param {?=} comparator
-     * @return {?}
+     * @param value
+     * @param {any[]} expressions
+     * @param {boolean} reverse
+     * @param {boolean} isCaseInsensitive
+     * @param {Function} comparator
+     * @returns {any}
      */
     OrderPipe.prototype.multiExpressionTransform = function (value, expressions, reverse, isCaseInsensitive, comparator) {
         var _this = this;
@@ -76447,42 +76439,31 @@ var OrderPipe = /** @class */ (function () {
             return _this.transform(result, expression, reverse, isCaseInsensitive, comparator);
         }, value);
     };
+    var OrderPipe_1;
+    OrderPipe = OrderPipe_1 = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Pipe"])({
+            name: 'orderBy',
+            pure: false
+        })
+    ], OrderPipe);
     return OrderPipe;
 }());
-OrderPipe.decorators = [
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"], args: [{
-                name: 'orderBy',
-                pure: false
-            },] },
-];
-/**
- * @nocollapse
- */
-OrderPipe.ctorParameters = function () { return []; };
-/**
- * Created by vadimdez on 20/01/2017.
- */
+
 var OrderModule = /** @class */ (function () {
     function OrderModule() {
     }
+    OrderModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            declarations: [OrderPipe],
+            exports: [OrderPipe],
+            providers: [OrderPipe]
+        })
+    ], OrderModule);
     return OrderModule;
 }());
-OrderModule.decorators = [
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"], args: [{
-                declarations: [OrderPipe],
-                exports: [OrderPipe],
-                providers: [OrderPipe]
-            },] },
-];
-/**
- * @nocollapse
- */
-OrderModule.ctorParameters = function () { return []; };
-/**
- * Generated bundle index. Do not edit.
- */
 
-//# sourceMappingURL=ngx-order-pipe.es5.js.map
+
+//# sourceMappingURL=ngx-order-pipe.js.map
 
 
 /***/ }),
@@ -88963,7 +88944,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************************!*\
   !*** ./node_modules/tslib/tslib.es6.js ***!
   \*****************************************/
-/*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __exportStar, __values, __read, __spread, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault */
+/*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __exportStar, __values, __read, __spread, __spreadArrays, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -88980,6 +88961,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__values", function() { return __values; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__read", function() { return __read; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spread", function() { return __spread; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spreadArrays", function() { return __spreadArrays; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__await", function() { return __await; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncGenerator", function() { return __asyncGenerator; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncDelegator", function() { return __asyncDelegator; });
@@ -89032,8 +89014,10 @@ function __rest(s, e) {
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p];
     if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
-            t[p[i]] = s[p[i]];
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
     return t;
 }
 
@@ -89126,6 +89110,14 @@ function __spread() {
         ar = ar.concat(__read(arguments[i]));
     return ar;
 }
+
+function __spreadArrays() {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
 
 function __await(v) {
     return this instanceof __await ? (this.v = v, this) : new __await(v);
