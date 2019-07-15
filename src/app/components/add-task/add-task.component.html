@@ -23,7 +23,7 @@
               <input type="search" class="form-control" placeholder="Search" name="search" [(ngModel)]="searchProject"
                 [disabled]="task.checked" />
               <ul>
-                <li *ngFor="let proj of projects |filter : searchProject: 'Project'" (click)="selectProject(proj)">
+                <li *ngFor="let proj of projects |filter : searchProject: 'project'" (click)="selectProject(proj)">
                   {{proj.project}}
                 </li>
               </ul>
