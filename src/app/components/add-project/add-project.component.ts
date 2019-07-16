@@ -24,13 +24,13 @@ export class AddProjectComponent implements OnInit {
   users: Object[];
   projects: Object[];
   projectsCopy: Object[];
-  Priority: Number;
+  priority: Number;
   constructor(private RestApiService: BackendApiService, private orderPipe: OrderPipe) { }
 
   ngOnInit() {
     this.currentDate = this.getcurrentDate().requestDt;
     this.defaultEndDt = this.getcurrentDate().defaultEndDt;
-    this.Priority = 0;
+    this.priority = 0;
     this.getUersList();
     this.getProjectsList();
   }

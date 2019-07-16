@@ -44,25 +44,25 @@ describe('AddProjectComponent', () => {
   it('should reset proj', () => {
 
     component.project = {
-      'Project': 'Project NAme',
-      'Priority': 0,
-      'startDate': '2019-05-08',
-      'endDate': '2019-05-18',
-      'Manager': 'Divya',
+      'project': 'ProjectTest',
+      'priority': 5,
+      'startDate': '2019-07-16',
+      'endDate': '2019-07-23',
+      'manager': 'Saravanan',
       'edit': false,
       'checked': false
     };
     component.reset();
     fixture.detectChanges();
-    expect(component.project.Project).toBe('Project NAme');
-    expect(component.project.Priority).toBe(0);
+    expect(component.project.project).toBe('ProjectTest');
+    expect(component.project.priority).toBe(5);
   });
 
   it('should check defaults when checkbox is selected', () => {
     component.project.checked = true;
     component.assignDefault();
-    expect(component.project.startDate).toBe('2019-05-09');
-    expect(component.project.endDate).toBe('2019-05-10');
+    expect(component.project.startDate).toBe('2019-07-17');
+    expect(component.project.endDate).toBe('2019-07-23');
   });
 
   it('should check defaults when checkbox is not selected', () => {
@@ -86,20 +86,20 @@ describe('AddProjectComponent', () => {
 
   it('should EditProject', () => {
     let proj = {
-      '_id': '4521d55f2dd',
-      'Priority': 5,
-      'Project': 'Validations',
-      'Start_Date': '2019-05-15',
-      'End_Date': '2019-05-18',
-      'Manager': 'Anil'
+      'projectId': '',
+      'priority': 5,
+      'project': 'Validations',
+      'startDate': '2019-07-17',
+      'endDate': '2019-07-23',
+      'manager': 'Saravanan'
     }
     component.EditProject(proj);
     fixture.detectChanges();
-    expect(component.project.Project).toBe('Validations');
-    expect(component.project.startDate).toBe('2019-05-15');
-    expect(component.project.endDate).toBe('2019-05-18');
-    expect(component.Priority).toBe(5);
-    expect(component.project.Manager).toBe('Anil');
+    expect(component.project.project).toBe('Validations');
+    expect(component.project.startDate).toBe('2019-07-17');
+    expect(component.project.endDate).toBe('2019-07-23');
+    expect(component.priority).toBe(5);
+    expect(component.project.manager).toBe('Saravanan');
   });
 
 
@@ -127,12 +127,12 @@ describe('AddProjectComponent', () => {
 
   it('should getTasksList user', () => {
     component.projects = [{
-      'Project': 'Divya', '_id': 'fsfs45123'
+      'project': 'Saravanan', 'projectId': '343423'
     },
     {
-      'Project': 'Sravanthi', '_id': 'dsadad822a'
+      'project': 'Test', 'projectId': 'dsasff'
     }, {
-      'Project': 'Dineesh', '_id': 'asdsdrfv535dv'
+      'project': 'Testone', 'projectId': 'asdrerer'
     }];
 
     component.getTasksList();
@@ -142,42 +142,42 @@ describe('AddProjectComponent', () => {
 
   it('should filterProjects', () => {
     component.projectsCopy = [{
-      'Project': 'Divya'
+      'project': 'Saravanan'
     },
     {
-      'Project': 'Sravanthi'
+      'project': 'Test'
     }, {
-      'Project': 'Dineesh'
+      'project': 'TestOne'
     }
     ];
     const response = [{
-      'Project': 'Dineesh'
+      'project': 'Test'
     },
     {
-      'Project': 'Divya'
+      'project': 'Saravanan'
     }, {
-      'Project': 'Sravanthi'
+      'project': 'TestOne'
     }
     ];
-    component.filterProjects('Project');
+    component.filterProjects('project');
     fixture.detectChanges();
     expect(component.projects).toEqual(response);
   });
 
   it('should checkDateErr', () => {
 
-    component.checkDateErr('2019-05-08', '2019-05-18');
+    component.checkDateErr('2019-07-17', '2019-07-23');
     fixture.detectChanges();
   });
 
   it('should selectManager', () => {
     var user = {
-      First_Name: 'Divya',
-      Last_Name: 'Chig'
+      firstName: 'Saravanan',
+      lastName: 'Pandian'
     };
     component.selectManager(user);
     fixture.detectChanges();
-    expect(component.project.Manager).toBe('Divya Chig')
+    expect(component.project.manager).toBe('Saravanan')
   });
 
 });

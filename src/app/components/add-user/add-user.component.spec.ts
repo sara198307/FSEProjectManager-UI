@@ -9,12 +9,12 @@ import { of } from 'rxjs';
 import { AddUserComponent } from './add-user.component';
 
 const users = [{
-  'First_Name': 'Divya'
+  'firstName': 'Saravanan'
 },
 {
-  'First_Name': 'Sravanthi'
+  'firstName': 'Pandian'
 }, {
-  'First_Name': 'Dineesh'
+  'firstName': 'Sara'
 }
 ];
 describe('AddUserComponent', () => {
@@ -49,13 +49,13 @@ describe('AddUserComponent', () => {
   it('should reset user', () => {
     fixture.detectChanges();
     component.user = {
-      'firstName': 'Divya',
+      'firstName': 'Saravanan',
       'lastName': 'Chi',
-      'employeeID': '559988',
+      'empId': '559988',
       'edit': false
     };
     component.reset();
-    expect(component.user.firstName).toBe('Divya');
+    expect(component.user.firstName).toBe('Saravanan');
   });
 
   it('should Cancel ', () => {
@@ -82,51 +82,51 @@ describe('AddUserComponent', () => {
 
   it('should filterUsers', () => {
     component.usersCopy = [{
-      'First_Name': 'Divya'
+      'firstName': 'Saravanan'
     },
     {
-      'First_Name': 'Sravanthi'
+      'firstName': 'Pandian'
     }, {
-      'First_Name': 'Dineesh'
+      'firstName': 'Sara'
     }
     ];
     const response = [{
-      'First_Name': 'Dineesh'
+      'firstName': 'Sara'
     },
     {
-      'First_Name': 'Divya'
+      'firstName': 'Saravanan'
     }, {
-      'First_Name': 'Sravanthi'
+      'firstName': 'Pandian'
     }
     ];
-    component.filterUsers('First_Name');
+    component.filterUsers('firstName');
     fixture.detectChanges();
     expect(component.users).toEqual(response);
   });
 
   it('should EditUser', () => {
     let user = {
-      '_id': '4521d55f2dd',
-      'First_Name': 'Divya',
+      'userId': '4521d55f2dd',
+      'firstName': 'Saravanan',
       'Last_Name': 'Chig',
-      'Employee_ID': '602814'
+      'empId': '602814'
     }
     component.EditUser(user);
     fixture.detectChanges();
-    expect(component.user.firstName).toBe('Divya');
+    expect(component.user.firstName).toBe('Saravanan');
     expect(component.user.lastName).toBe('Chig');
-    expect(component.user.employeeID).toBe('602814');
+    expect(component.user.empId).toBe('602814');
   });
 
 
   it('should updateUser', fakeAsync(() => {
     let user = {
-      '_id': '4521d55f2dd',
-      'First_Name': 'Divya',
+      'userId': '4521d55f2dd',
+      'firstName': 'Saravanan',
       'Last_Name': 'Chig',
-      'Employee_ID': '602814'
+      'empId': '602814'
     }
-    component.updateUser(user);
+    component.updateUser(user,user.userId);
     var ele = fixture.debugElement.query(By.css('#alert')).nativeElement;
     ele.classList.remove('d-none');
     tick(5000);

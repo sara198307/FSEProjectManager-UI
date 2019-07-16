@@ -48,7 +48,7 @@ describe('AddTaskComponent', () => {
 
   it('should reset', () => {
     component.reset();
-    expect(component.task.Priority).toBe(0);
+    expect(component.task.priority).toBe(0);
   });
 
   it('should getParentTasksList', () => {
@@ -90,29 +90,29 @@ describe('AddTaskComponent', () => {
 
   it('should selectProject', () => {
     let proj = {
-      _id: '1125fdf155gfrfs',
-      Project: 'Angular',
+      projectId: '3434343',
+      project: 'Angular6',
 
     }
     component.selectProject(proj);
-    expect(component.task.Project_ID).toBe('1125fdf155gfrfs');
-    expect(component.task.Project).toBe('Angular');
+    expect(component.task.projectId).toBe('testone');
+    expect(component.task.project).toBe('Angular6');
   });
 
   it('should selectParent', () => {
     let parent = {
-      _id: '1125fdf155gfrfs',
-      Parent_Task: 'Parent task',
+      parentId: 'testone',
+      parentTask: 'Parent task',
     };
     component.selectParent(parent);
-    expect(component.task.Parent_ID).toBe('1125fdf155gfrfs');
+    expect(component.task.parentId).toBe('testone');
     expect(component.task.parent).toBe('Parent task');
   });
 
   it('should selectUser', () => {
-    let user = { First_Name: 'Divya', Last_Name: 'chig' };
+    let user = { firstName: 'Saravanan', lastName: 'P' };
     component.selectUser(user);
-    expect(component.task.user).toBe('Divya chig');
+    expect(component.task.user).toBe('Saravanan P');
   });
 
   it('should getcurrentDate', () => {
@@ -126,7 +126,7 @@ describe('AddTaskComponent', () => {
 
   it('should getParentByFilter', () => {
     component.parentTasksCopy=[
-      {_id:'mkd1f5sdfdfsf','Parent_Task':'Project Structure'},{_id:'mkd1f5sdsdfgfdfsf','Parent_Task':'Project Backend'},{_id:'22225ftgjjjkf5sdfdfsf','Parent_Task':'Project Middleware'}
+      {parentId:'mkd1f5sdfdfsf','parentTask':'Project Structure'},{parentId:'mkd1f5sdsdfgfdfsf','parentTask':'Project Backend'},{parentId:'22225ftgjjjkf5sdfdfsf','parentTask':'Project Middleware'}
     ]
     let id = 'mkd1f5sdfdfsf';
     let response=component.getParentByFilter(id);
@@ -135,7 +135,7 @@ describe('AddTaskComponent', () => {
 
   it('should getProjectByFilter', () => {
     component.projectsCopy=[
-      {_id:'mkd1f5sdfdfsf','Project':'Project Structure'},{_id:'mkd1f5sdsdfgfdfsf','Project':'Project Backend'},{_id:'22225ftgjjjkf5sdfdfsf','Project':'Project Middleware'}
+      {projectId:'mkd1f5sdfdfsf','project':'Project Structure'},{projectId:'mkd1f5sdsdfgfdfsf','project':'Project Backend'},{projectId:'22225ftgjjjkf5sdfdfsf','project':'Project Middleware'}
     ];
     let id = 'mkd1f5sdfdfsf';
     let response=component.getProjectByFilter(id);

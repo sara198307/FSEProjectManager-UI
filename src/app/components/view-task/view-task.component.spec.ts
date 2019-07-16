@@ -59,7 +59,7 @@ describe('ViewTaskComponent', () => {
 
   it('should getParentByFilter', () => {
     component.parentTasksCopy=[
-      {_id:'mkd1f5sdfdfsf','Parent_Task':'Project Structure'},{_id:'mkd1f5sdsdfgfdfsf','Parent_Task':'Project Backend'},{_id:'22225ftgjjjkf5sdfdfsf','Parent_Task':'Project Middleware'}
+      {parentId:'mkd1f5sdfdfsf','parentTask':'Project Structure'},{parentId:'mkd1f5sdsdfgfdfsf','parentTask':'Project Backend'},{parentId:'22225ftgjjjkf5sdfdfsf','parentTask':'Project Middleware'}
     ]
     let id = 'mkd1f5sdfdfsf';
     let response=component.getParentByFilter(id);
@@ -76,8 +76,8 @@ describe('ViewTaskComponent', () => {
 
   it('should selectProject', () => {
     var proj={
-      _id:'152s2dfsdfsdf',
-      Project:'Project Structure'
+      projectId:'152s2dfsdfsdf',
+      project:'Project Structure'
     }
     spyOn(component,'getTasksList');
     component.selectProject(proj);
@@ -87,10 +87,10 @@ describe('ViewTaskComponent', () => {
 
   it('should EndTask', () => {
     var request={
-      '_id':'123dddd2132',
-      'Status': true
+      'taskId':'123dddd2132',
+      'status': true
     };
-    component.EndTask(request);
+    component.EndTask(request,request.taskId);
     expect(backendApiService.updateTask).toHaveBeenCalled();
   });
 
@@ -104,24 +104,24 @@ describe('ViewTaskComponent', () => {
 
   it('should filterUsers', () => {
     component.tasksCopy = [{
-      'Task': 'Divya'
+      'task': 'Saravaa'
     },
     {
-      'Task': 'Sravanthi'
+      'task': 'Hello'
     }, {
-      'Task': 'Dineesh'
+      'task': 'Testtask'
     }
     ];
     const response = [{
-      'Task': 'Dineesh'
+      'task': 'Saravaa'
     },
     {
-      'Task': 'Divya'
+      'task': 'Hello'
     }, {
-      'Task': 'Sravanthi'
+      'task': 'Testtask'
     }
     ];
-    component.filterUsers('Task');
+    component.filterUsers('task');
     fixture.detectChanges();
     expect(component.tasks).toEqual(response);
   });
