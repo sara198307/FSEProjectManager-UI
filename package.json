@@ -28,7 +28,7 @@
     "core-js": "^2.5.4",
     "express": "~4.13.4",
     "express-session": "^1.14.1",
-    "mongoose": "^4.13.7",
+    "mongoose": "^5.7.8",
     "morgan": "~1.7.0",
     "ngx-filter-pipe": "^2.1.2",
     "ngx-order-pipe": "^2.0.2",
